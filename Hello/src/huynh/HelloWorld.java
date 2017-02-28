@@ -2,7 +2,7 @@ package huynh;
 
 /**
  * 
- * Hello
+ * Hello World
  * Prints "Hello World"
  * FEB.21.2017
  * @author Jimmy Huynh
