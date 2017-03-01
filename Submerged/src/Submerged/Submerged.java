@@ -40,6 +40,7 @@ public class Submerged {
 					+ "the murderer?? Or (b): Find the other members?");
 			char userInput;
 			userInput = c.readChar();
+			c.readChar(); //read in enter at the end of the line
 			
 			
 			//Split up results - incomplete
@@ -47,8 +48,63 @@ public class Submerged {
 				
 				// Decision
 				c.println("You decide to stay alone, just in case. You need to make your"
-						+ " next move. Do you (a) want to take a break and keep hiding? "
+						+ "   next move. Do you (a) want to take a break and keep hiding? "
 								+ "Or (b): go find a weapon");
+				
+				
+				userInput = c.readChar();
+				c.readChar(); //read in enter at the end of the line
+				
+				if (userInput == 'a') {
+					c.println("You take a break. The door locks and you suffocate.");
+					// END
+				}
+				else {
+					// Array for weapons
+					String[] weapons = {"Rope", "Pistol", "Axe"};
+					// The weapon they acquire
+					int acquiredWeapon = (int)(Math.random() * 3);
+					
+					if (acquiredWeapon == 0) {
+						c.println("You got the rope");
+					}
+					else if (acquiredWeapon == 1) {
+						c.println("You got the pistol");
+					}
+					else {
+						c.println("You got the axe");
+					}
+					
+					
+				// Random Number Generator - not working
+					int randomPersonNumber = (int)(Math.random() * 2) + 1;
+					
+					// Meet the co-captain
+					if (randomPersonNumber == 1) {
+						
+						c.println("You meet the co-captain. You don't know whether to"
+								+ " trust him. Do you (a) attack? or (b) help him?");
+						
+						userInput = c.readChar();
+						c.readChar(); //read in enter at the end of the line
+						
+						//Attack the CC
+						if (userInput == 'a') {
+							//
+						}
+						
+						}
+						
+						
+						// Meet the "friend" (still have to write code)
+					else {
+						
+						c.println("You meet the friend. You don't know whether to"
+								+ " trust him. Do you (a) attack? or (b) help him?");
+						
+					}
+					
+				}
 			}
 			
 			else {
@@ -62,6 +118,7 @@ public class Submerged {
 			// Gets input - play again?
 			c.println("Would you like to play again? (y/n)");
 			playAgain = c.readChar();
+			c.readChar(); //read in enter at the end of the line
 			
 			if (playAgain != 'n' && playAgain != 'y') {
 				playAgain = 'n';
