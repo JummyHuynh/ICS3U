@@ -1,5 +1,11 @@
 package Submerged;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import hsa_new.Console;
 
 public class Submerged {
@@ -21,6 +27,10 @@ public class Submerged {
 		char userInput;
 		char playAgain;
 		// Resting code - Thread.sleep(milliseconds);
+		
+		//Image declarations
+		
+		//BufferedImage submarine = null;
 
 
 		// Main Program
@@ -33,7 +43,15 @@ public class Submerged {
 			String[] weapons = {"Rope", "Pistol", "Axe"};
 			// The weapon they acquire
 			int acquiredWeapon = (int)(Math.random() * 3);
-
+			
+			/**try {
+				submarine = ImageIO.read(new File("Images/Submarine.jpg"));
+			} catch (IOException e) {
+				// Should not have a catch
+				c.println("There was an error loading the image");
+				e.printStackTrace();
+			}
+*/
 			c.println("You are trapped in a submarine at the bottom of the ocean. As you were"
 					+ " on your way to Tunisia in a private submarine, the lights suddently went"
 					+ " out and you crashed. You go to the kitchen to discover the captain of the"
@@ -224,13 +242,32 @@ public class Submerged {
 						c.println(); //for spacing
 
 
-						// next user input for ensuring a or b
+						//Ensures they put in either a or b
+						while (userInput != 'a' && userInput != 'b') {
+
+							c.clear(); // clears screen
+
+							c.println("You must choose either 'a' or 'b'");
+
+							c.println();
+							c.println("You see the friend. You don't know whether to"
+									+ " trust him. He doesn't see you, so you have the advantage."
+									+ " Do you (a) attack? or (b) help him?");
+							c.println(); //for spacing
+							userInput = c.readChar();
+							c.readChar(); //read in enter at the end of the line
+
+							c.clear(); // clears screen
+
+						}
 
 
 						userInput = c.readChar();
 						c.readChar();
 
 						c.clear(); // clears screen
+						
+						
 
 						// Attack the friend
 						if(userInput == 'a') {
@@ -267,6 +304,11 @@ public class Submerged {
 									+ " You get arrested and you never get to clear your name.");
 
 							c.println(); // for spacing
+							
+							c.println("He attacks you and ties you up. "
+									+ "He blames you for the murder, even though you didn't do anything."
+									+ " You get arrested and you never get to clear your name.");
+							c.println(); //for spacing
 
 							// END
 						}
@@ -293,6 +335,24 @@ public class Submerged {
 
 					c.clear(); // clears screen
 
+					
+					//Ensures they put in either a or b
+					while (userInput != 'a' && userInput != 'b') {
+
+						c.clear(); // clears screen
+
+						c.println("You must choose either 'a' or 'b'");
+
+						c.println();
+						c.println("You decide to go find help. You head towards the main hallway."
+								+ " Do you go to (a) the lounge? Or (b) the bedroom?");
+						c.println(); //for spacing
+						userInput = c.readChar();
+						c.readChar(); //read in enter at the end of the line
+
+						c.clear(); // clears screen
+
+					}
 
 					//You go to lounge
 
@@ -304,6 +364,25 @@ public class Submerged {
 						c.readChar();
 
 						c.clear(); // clears screen
+						
+						//Ensures they put in either a or b
+						while (finalAnswer != 'a' && finalAnswer != 'b') {
+
+							c.clear(); // clears screen
+
+							c.println("You must choose either 'a' or 'b'");
+							c.println();
+							
+							c.println("You find the friend in the lounge. You don't know"
+									+ " why he's there. Are you going to (a) trust him? or"
+									+ " (b) go back to the hallway?");
+							c.println(); //for spacing
+							finalAnswer = c.readChar();
+							c.readChar(); //read in enter at the end of the line
+
+							c.clear(); // clears screen
+
+						}
 
 					}
 					// go to bedroom
@@ -313,6 +392,24 @@ public class Submerged {
 								+ " (b) go back to the hallway?");
 						finalAnswer = c.readChar();
 						c.readChar();
+						
+						while (finalAnswer != 'a' && finalAnswer != 'b') {
+
+							c.clear(); // clears screen
+
+							c.println("You must choose either 'a' or 'b'");
+
+							c.println();
+							c.println("You find the friend in the lounge. You don't know"
+									+ " why he's there. Are you going to (a) trust him? or"
+									+ " (b) go back to the hallway?");
+							c.println(); //for spacing
+							finalAnswer = c.readChar();
+							c.readChar(); //read in enter at the end of the line
+
+							c.clear(); // clears screen
+
+						}
 
 						c.clear(); // clears screen
 
@@ -332,6 +429,24 @@ public class Submerged {
 					c.readChar();
 
 					c.clear(); // clears screen
+					
+					while (userInput != 'a' && userInput != 'b') {
+
+						c.clear(); // clears screen
+
+						c.println("You must choose either 'a' or 'b'");
+
+						c.println();
+						c.println("You trusted the friend. They tell you that they need to go "
+								+ "to the control room. He offers you to go first. Do you"
+								+ " (a) accept and go first? or (b) tell him to go first?");
+						c.println(); //for spacing
+						userInput = c.readChar();
+						c.readChar(); //read in enter at the end of the line
+
+						c.clear(); // clears screen
+
+					}
 
 					//You go first
 					if (userInput == 'a') {
@@ -352,10 +467,30 @@ public class Submerged {
 						c.readChar();
 
 						c.clear(); // clears screen
+						
+						while (userInput != 'a' && userInput != 'b') {
 
+							c.clear(); // clears screen
+
+							c.println("You must choose either 'a' or 'b'");
+
+							c.println();
+							c.println("You say you'd feel more comfortable if you walked behind. "
+									+ "he accepts. You notice something stained his shirt. Do you"
+									+ " (a) ask him about it? or (b) try to get away?");
+							c.println(); //for spacing
+							userInput = c.readChar();
+							c.readChar(); //read in enter at the end of the line
+
+							c.clear(); // clears screen
+
+						}
+						
+						
 						//asked him
 						if (userInput == 'a') {
-							c.println("He knows you're onto him. He shanks yo limpy ass. You ded.");
+							c.println("Your questioning threatens him. You don't notice him pulling out his"
+									+ "dagger and ending your life.");
 							c.println(); // for spacing
 
 							// END
@@ -369,6 +504,23 @@ public class Submerged {
 							c.readChar();
 
 							c.clear(); // clears screen
+							
+							while (userInput != 'a' && userInput != 'b') {
+
+								c.clear(); // clears screen
+
+								c.println("You must choose either 'a' or 'b'");
+
+								c.println();
+								c.println("You need to get away. Do you (a) run or do you (b) sneak away and"
+										+ " hope he doesn't notice?");
+								c.println(); //for spacing
+								userInput = c.readChar();
+								c.readChar(); //read in enter at the end of the line
+
+								c.clear(); // clears screen
+
+							}
 
 							//Run and notices
 							if (userInput == 'a') {
@@ -387,6 +539,24 @@ public class Submerged {
 								c.readChar();
 
 								c.clear(); // clears screen
+								
+								while (userInput != 'a' && userInput != 'b') {
+
+									c.clear(); // clears screen
+
+									c.println("You must choose either 'a' or 'b'");
+
+									c.println();
+									c.println("You find scuba-gear and you leave the submarine. On the surface of the water,"
+											+ " you see an island and a boat. You don't know if the boat is going towards or away"
+											+ " from you. Do you (a) got to the island? or (b) risk going to the boat?");
+									c.println(); //for spacing
+									userInput = c.readChar();
+									c.readChar(); //read in enter at the end of the line
+
+									c.clear(); // clears screen
+
+								}
 
 
 								//Swim to island
@@ -436,6 +606,23 @@ public class Submerged {
 					c.readChar();
 
 					c.clear(); // clears screen
+					
+					while (userInput != 'a' && userInput != 'b') {
+
+						c.clear(); // clears screen
+
+						c.println("You must choose either 'a' or 'b'");
+
+						c.println();
+						c.println("You find the co-captain. Do you (a) go to the control room, or do you "
+								+ "(b) go to the bedroom to search for clues");
+						c.println(); //for spacing
+						userInput = c.readChar();
+						c.readChar(); //read in enter at the end of the line
+
+						c.clear(); // clears screen
+
+					}
 
 					//With the loop
 					if (userInput == 'a') {
@@ -451,13 +638,27 @@ public class Submerged {
 								+ "of them is right."
 								+ " Enter in the 4 digits, you have 2 chances.");
 
-						//password loop
+						//password loop -- ERROR TO FIX
 						int passcodeEntered;
 						int counter;
 						for (counter = 1; counter >= 0; counter--) {
+							
+						
 
+							// Loop for numbers, ensures it is a number
+							boolean flag = false;
+							do {
+								flag = false;
+								try {
+								passcodeEntered = Integer.parseInt(c.readLine());
+								} catch (Exception e) {
+									c.println("Please enter numbers");
+									flag = true;
+								}
+							}while(flag);
+							
 							passcodeEntered = c.readInt();
-
+							
 							if (passcodeEntered == password) {
 								counter = 0;
 								c.println("The co-captain takes control of the submarine and you both "
@@ -499,6 +700,25 @@ public class Submerged {
 						c.readChar();
 
 						c.clear(); // clears screen
+						
+						while (userInput != 'a' && userInput != 'b') {
+
+							c.clear(); // clears screen
+
+							c.println("You must choose either 'a' or 'b'");
+
+							c.println();
+							c.println("You search around for clues. You find the captain's notebook which contains the passcode."
+									+ " Both you and the captain run to the control room and open the lock. Should you (a)"
+									+ " lock the door? or (b) leave it?");
+							c.println(); //for spacing
+							userInput = c.readChar();
+							c.readChar(); //read in enter at the end of the line
+
+							c.clear(); // clears screen
+
+						}
+
 
 						// Lock the door
 						if (userInput == 'a') {
@@ -544,6 +764,7 @@ public class Submerged {
 		} while (playAgain != 'n');
 
 		c.println("The game has ended.");
+		
 
 	}
 
