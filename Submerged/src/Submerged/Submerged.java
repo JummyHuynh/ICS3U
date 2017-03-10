@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import hsa_new.Console;
 
@@ -24,6 +26,7 @@ public class Submerged {
 		Console c = new Console(35, 80);
 
 		// Input variables
+	
 		char userInput;
 		char playAgain;
 		// Resting code - Thread.sleep(milliseconds);
@@ -36,6 +39,8 @@ public class Submerged {
 		BufferedImage closetDoor = null;
 		BufferedImage rope = null;
 		BufferedImage gun = null;
+		
+		Clip stab = null;
 
 
 
@@ -58,6 +63,47 @@ public class Submerged {
 				e.printStackTrace();
 			}
 
+			
+			try {
+				
+				// *****************************
+				// THESE LINES CREATE THE CLIP TO PLAY THE MUSIC. 
+				// Cut and paste them into your program, and change "theme.wav"
+				// to the sound you want to play. 
+				stab = AudioSystem.getClip(); //create the clip object
+				stab.open(AudioSystem.getAudioInputStream(new File("Audio/Stab.wav"))); //open the given file for the clip
+
+				System.out.println("OK, here comes some music!");
+				c.println("OK, here comes some music!");
+				Thread.sleep(1000);
+
+				// ************************
+				// Include this line when you want the sound to start playing.
+				stab.start();
+				// Instead of using start you could alternatively use the loop function.
+				// The following line will loop your music until stop is called.
+				// theme.loop(Clip.LOOP_CONTINUOUSLY);
+				// ************************
+
+				// THE PROGRAM CONTINUES WHILE THE MUSIC PLAYS
+				Thread.sleep(5000);
+				System.out.println("Hope you like it!");
+				Thread.sleep(500);
+				
+				
+				// ************************
+				// Include this line when you want the sound to stop playing.
+				stab.stop();
+				// ************************
+
+				Thread.sleep(1000);
+				System.out.println("Goodbye");  
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//************************
+			
 			c.drawImage(submarine, 0, 0, 800, 700, null);
 
 			c.println("You are trapped in a submarine at the bottom of the ocean. As you were"
@@ -128,8 +174,8 @@ public class Submerged {
 					c.readChar(); //read in enter at the end of the line
 
 					c.clear(); // clears screen
-
 				}
+				
 				c.clear(); // clears screen
 
 				if (userInput == 'a') {
@@ -285,11 +331,11 @@ public class Submerged {
 						c.println("(b): Help him?");
 						c.println(); //for spacing
 
-userInput = c.readChar();
+						userInput = c.readChar();
 						c.readChar();
 
 						c.clear(); // clears screen
-						
+
 						//Ensures they put in either a or b
 						while (userInput != 'a' && userInput != 'b') {
 
@@ -310,11 +356,6 @@ userInput = c.readChar();
 							c.clear(); // clears screen
 
 						}
-
-
-						
-
-
 
 						// Attack the friend
 						if(userInput == 'a') {
@@ -351,11 +392,6 @@ userInput = c.readChar();
 									+ " You get arrested and you never get to clear your name.");
 
 							c.println(); // for spacing
-
-							c.println("He attacks you and ties you up. "
-									+ "He blames you for the murder, even though you didn't do anything."
-									+ " You get arrested and you never get to clear your name.");
-							c.println(); //for spacing
 
 							// END
 						}
@@ -479,6 +515,7 @@ userInput = c.readChar();
 
 					c.clear(); // clears screen
 
+					//ensures they input a or b
 					while (userInput != 'a' && userInput != 'b') {
 
 						c.clear(); // clears screen
@@ -636,7 +673,6 @@ userInput = c.readChar();
 										c.println(); // for spacing
 
 										//END
-
 									}
 								}
 							}
@@ -644,6 +680,11 @@ userInput = c.readChar();
 					}
 				}
 
+				
+				// whiles are good until here
+				
+				
+				
 				// The bedroom
 				else {
 					c.println("You find the co-captain. Do you (a) go to the control room, or do you "
@@ -725,11 +766,8 @@ userInput = c.readChar();
 
 									//END
 								}
-
 							}
-
 						}
-
 					}
 
 					// Search around
@@ -783,11 +821,8 @@ userInput = c.readChar();
 
 							// END
 						}
-
 					}
-
 				}
-
 			} 
 
 			// Gets input - play again?
@@ -799,7 +834,6 @@ userInput = c.readChar();
 			if (playAgain != 'n' && playAgain != 'y') {
 				playAgain = 'n';
 				c.println("That is not a valid answer.");
-
 			}
 
 			c.clear(); // clears screen
