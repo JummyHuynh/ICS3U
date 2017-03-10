@@ -21,16 +21,22 @@ public class Submerged {
 
 	public static void main(String[] args) {
 
-		Console c = new Console();
+		Console c = new Console(35, 80);
 
 		// Input variables
 		char userInput;
 		char playAgain;
 		// Resting code - Thread.sleep(milliseconds);
-		
+
 		//Image declarations
-		
-		//BufferedImage submarine = null;
+
+		BufferedImage submarine = null;
+		BufferedImage controlRoom = null;
+		BufferedImage axe = null;
+		BufferedImage closetDoor = null;
+		BufferedImage rope = null;
+		BufferedImage gun = null;
+
 
 
 		// Main Program
@@ -43,27 +49,28 @@ public class Submerged {
 			String[] weapons = {"Rope", "Pistol", "Axe"};
 			// The weapon they acquire
 			int acquiredWeapon = (int)(Math.random() * 3);
-			
-			/**try {
+
+			try {
 				submarine = ImageIO.read(new File("Images/Submarine.jpg"));
 			} catch (IOException e) {
 				// Should not have a catch
 				c.println("There was an error loading the image");
 				e.printStackTrace();
 			}
-*/
+
+			c.drawImage(submarine, 0, 0, 800, 700, null);
+
 			c.println("You are trapped in a submarine at the bottom of the ocean. As you were"
-					+ " on your way to Tunisia in a private submarine, the lights suddently went"
-					+ " out and you crashed. You go to the kitchen to discover the captain of the"
-					+ " ship,  dead. With multiple stab wounds, you assume he has been"
-					+ " murdered.");
+					+ " on your way to Tunisia, the lights suddently went"
+					+ " out and you crashed.");
+			c.println("You go to the kitchen to discover the captain of the ship dead. With multiple stab wounds, you assume he has been murdered.");
 			c.println(); //for spacing
 
 
 			// Decisions: find others or stay alone?
-			c.println("There are 2 other members on the ship. Do you want to (a): stay "
-					+ "alone in case one of them is "
-					+ "the murderer?? Or (b): Find the other members?");
+			c.println("There are 2 other members on the ship. Do you want to");
+			c.println("(a): Stay alone in case one of them is the murderer?");
+			c.println("(b): Find the other members?");
 			c.println(); //for spacing
 
 
@@ -81,9 +88,9 @@ public class Submerged {
 				c.println("You must choose either 'a' or 'b'");
 
 				c.println();
-				c.println("There are 2 other members on the ship. Do you want to (a): stay "
-						+ "alone in case one of them is "
-						+ "the murderer?? Or (b): Find the other members?");
+				c.println("There are 2 other members on the ship. Do you want to");
+				c.println("(a): Stay alone in case one of them is the murderer?");
+				c.println("(b): Find the other members?");
 
 				userInput = c.readChar();
 				c.readChar(); //read in enter at the end of the line
@@ -96,9 +103,9 @@ public class Submerged {
 			if (userInput == 'a') {
 
 				// Decision
-				c.println("You decide to stay alone, just in case. You need to make your"
-						+ " next move. Do you (a) want to take a break and keep hiding? "
-						+ "Or (b): go find a weapon");
+				c.println("You decide to stay alone, just in case. You need to make your next move. Do you ");
+				c.println("(a): Want to take a break and keep hiding?");
+				c.println("(b): Go find a weapon");
 				c.println(); //for spacing
 
 				userInput = c.readChar();
@@ -112,9 +119,10 @@ public class Submerged {
 					c.println("You must choose either 'a' or 'b'");
 
 					c.println();
-					c.println("You decide to stay alone, just in case. You need to make your"
-							+ " next move. Do you (a) want to take a break and keep hiding? "
-							+ "Or (b): go find a weapon");
+					c.println("You decide to stay alone, just in case. You need to make your next move. Do you ");
+					c.println("(a): Want to take a break and keep hiding");
+					c.println("(b): Go find a weapon");
+					c.println(); //for spacing
 
 					userInput = c.readChar();
 					c.readChar(); //read in enter at the end of the line
@@ -134,22 +142,58 @@ public class Submerged {
 					//Easier way:
 					c.println("You got the " + weapons[acquiredWeapon]);
 
+					//Output the image of the acquired weapon
+					if (acquiredWeapon == 0) {
+						try {
+							rope = ImageIO.read(new File("Images/Rope.jpeg"));
+						} catch (IOException e) {
+							// Should not have a catch
+							c.println("There was an error loading the image");
+							e.printStackTrace();
+						}
+
+						c.drawImage(rope, 100, 300, 200, 150, null);
+					}
+
+					else if (acquiredWeapon == 1) {
+						try {
+							gun = ImageIO.read(new File("Images/Gun.jpg"));
+						} catch (IOException e) {
+							// Should not have a catch
+							c.println("There was an error loading the image");
+							e.printStackTrace();
+						}
+
+						c.drawImage(gun, 100, 300, 200, 150, null);
+					}
+
+					else {
+						try {
+							axe = ImageIO.read(new File("Images/Axe.jpg"));
+						} catch (IOException e) {
+							// Should not have a catch
+							c.println("There was an error loading the image");
+							e.printStackTrace();
+						}
+
+						c.drawImage(axe, 100, 300, 200, 150, null);
+					}
+
 
 					// Random Number Generator - not working
-					int randomPersonNumber = (int)(Math.random() * 2);
+					int randomPersonNumber = 0;
+					randomPersonNumber = (int)(Math.random() * 2);
 
 					// Meet the co-captain
 					if (randomPersonNumber == 0) {
 
-						c.println("You meet the co-captain. You don't know whether to"
-								+ " trust him. Do you (a) attack? or (b) help him?");
+						c.println("You meet the co-captain. You don't know whether to trust him. Do you");
+						c.println("(a): Attack");
+						c.println("(b): Help him");
 						c.println(); //for spacing
 
 						userInput = c.readChar();
 						c.readChar(); //read in enter at the end of the line
-
-						c.clear(); // clears screen
-
 
 						//Ensures they put in either a or b
 						while (userInput != 'a' && userInput != 'b') {
@@ -159,13 +203,15 @@ public class Submerged {
 							c.println("You must choose either 'a' or 'b'");
 
 							c.println();
-							c.println("You meet the co-captain. You don't know whether to"
-									+ " trust him. Do you (a) attack? or (b) help him?");
+							c.println("You meet the co-captain. You don't know whether to trust him. Do you");
+							c.println("(a): Attack");
+							c.println("(b): Help him");
 
+							c.println(); //for spacing
 							userInput = c.readChar();
-							c.readChar(); //read in enter at the end of the line
+							c.readChar();
 
-							c.clear(); // clears screen
+							//Output the image of the acquired weapon
 
 						}
 
@@ -178,8 +224,8 @@ public class Submerged {
 							if (acquiredWeapon == 0) {
 								c.println("You attack him with a rope. He manages to free himeself"
 										+ " and, feeling threatened, he subdues you and handcuffs "
-										+ "you to the desk. When he finally gets everyone out, you"
-										+ " are arrested and blamed for the murder.");
+										+ "you to the desk.");
+								c.println("When he finally gets everyone out, you are arrested and blamed for the murder.");
 							}
 							// weapon is pistol
 							else if (acquiredWeapon == 1){
@@ -228,20 +274,22 @@ public class Submerged {
 
 							// END
 						}
-
 					}
-
-
 
 					// Meet the "friend"
 					else {
 
-						c.println("You see the friend. You don't know whether to"
-								+ " trust him. He doesn't see you, so you have the advantage."
-								+ " Do you (a) attack? or (b) help him?");
+						c.println("You see the friend. You don't know whether to trust him. He doesn't see you, so you have the advantage.");
+						c.println("Do you");
+						c.println("(a): Attack");
+						c.println("(b): Help him?");
 						c.println(); //for spacing
 
+userInput = c.readChar();
+						c.readChar();
 
+						c.clear(); // clears screen
+						
 						//Ensures they put in either a or b
 						while (userInput != 'a' && userInput != 'b') {
 
@@ -250,10 +298,12 @@ public class Submerged {
 							c.println("You must choose either 'a' or 'b'");
 
 							c.println();
-							c.println("You see the friend. You don't know whether to"
-									+ " trust him. He doesn't see you, so you have the advantage."
-									+ " Do you (a) attack? or (b) help him?");
+							c.println("You see the friend. You don't know whether to trust him. He doesn't see you, so you have the advantage.");
+							c.println("Do you");
+							c.println("(a): Attack");
+							c.println("(b): Help him?");
 							c.println(); //for spacing
+
 							userInput = c.readChar();
 							c.readChar(); //read in enter at the end of the line
 
@@ -262,12 +312,9 @@ public class Submerged {
 						}
 
 
-						userInput = c.readChar();
-						c.readChar();
+						
 
-						c.clear(); // clears screen
-						
-						
+
 
 						// Attack the friend
 						if(userInput == 'a') {
@@ -304,7 +351,7 @@ public class Submerged {
 									+ " You get arrested and you never get to clear your name.");
 
 							c.println(); // for spacing
-							
+
 							c.println("He attacks you and ties you up. "
 									+ "He blames you for the murder, even though you didn't do anything."
 									+ " You get arrested and you never get to clear your name.");
@@ -312,9 +359,7 @@ public class Submerged {
 
 							// END
 						}
-
 					}
-
 				}
 			}
 
@@ -327,7 +372,9 @@ public class Submerged {
 
 					// Decision - incomplete (need do loop)
 					c.println("You decide to go find help. You head towards the main hallway."
-							+ " Do you go to (a) the lounge? Or (b) the bedroom?");
+							+ " Do you go to");
+					c.println("(a) The lounge");
+					c.println("(b) The bedroom?");
 
 					c.println(); //for spacing
 					userInput = c.readChar();
@@ -335,7 +382,7 @@ public class Submerged {
 
 					c.clear(); // clears screen
 
-					
+
 					//Ensures they put in either a or b
 					while (userInput != 'a' && userInput != 'b') {
 
@@ -345,7 +392,9 @@ public class Submerged {
 
 						c.println();
 						c.println("You decide to go find help. You head towards the main hallway."
-								+ " Do you go to (a) the lounge? Or (b) the bedroom?");
+								+ " Do you go to");
+						c.println("(a) The lounge");
+						c.println("(b) The bedroom?");
 						c.println(); //for spacing
 						userInput = c.readChar();
 						c.readChar(); //read in enter at the end of the line
@@ -357,14 +406,14 @@ public class Submerged {
 					//You go to lounge
 
 					if (userInput == 'a') {
-						c.println("You find the friend in the lounge. You don't know"
-								+ " why he's there. Are you going to (a) trust him? or"
-								+ " (b) go back to the hallway?");
+						c.println("You find the friend in the lounge. You don't know why he's there. Are you going to");
+						c.println("(a) Trust him");
+						c.println("(b) Go back to the hallway?");
 						finalAnswer = c.readChar();
 						c.readChar();
 
 						c.clear(); // clears screen
-						
+
 						//Ensures they put in either a or b
 						while (finalAnswer != 'a' && finalAnswer != 'b') {
 
@@ -372,10 +421,10 @@ public class Submerged {
 
 							c.println("You must choose either 'a' or 'b'");
 							c.println();
-							
-							c.println("You find the friend in the lounge. You don't know"
-									+ " why he's there. Are you going to (a) trust him? or"
-									+ " (b) go back to the hallway?");
+
+							c.println("You find the friend in the lounge. You don't know why he's there. Are you going to");
+							c.println("(a) Trust him");
+							c.println("(b) Go back to the hallway?");
 							c.println(); //for spacing
 							finalAnswer = c.readChar();
 							c.readChar(); //read in enter at the end of the line
@@ -387,12 +436,12 @@ public class Submerged {
 					}
 					// go to bedroom
 					else {
-						c.println("You find the co-captain in the bedroom. You don't know"
-								+ " why he's there. Are you going to (a) trust him? or"
-								+ " (b) go back to the hallway?");
+						c.println("You find the co-captain in the lounge. You don't know why he's there. Are you going to");
+						c.println("(a) Trust him");
+						c.println("(b) Go back to the hallway?");
 						finalAnswer = c.readChar();
 						c.readChar();
-						
+
 						while (finalAnswer != 'a' && finalAnswer != 'b') {
 
 							c.clear(); // clears screen
@@ -400,9 +449,9 @@ public class Submerged {
 							c.println("You must choose either 'a' or 'b'");
 
 							c.println();
-							c.println("You find the friend in the lounge. You don't know"
-									+ " why he's there. Are you going to (a) trust him? or"
-									+ " (b) go back to the hallway?");
+							c.println("You find the co-captain in the lounge. You don't know why he's there. Are you going to");
+							c.println("(a) Trust him");
+							c.println("(b) Go back to the hallway?");
 							c.println(); //for spacing
 							finalAnswer = c.readChar();
 							c.readChar(); //read in enter at the end of the line
@@ -416,7 +465,7 @@ public class Submerged {
 					}
 
 
-					// Redo this
+
 				} while (finalAnswer != 'a');
 
 				//the lounge
@@ -429,7 +478,7 @@ public class Submerged {
 					c.readChar();
 
 					c.clear(); // clears screen
-					
+
 					while (userInput != 'a' && userInput != 'b') {
 
 						c.clear(); // clears screen
@@ -467,7 +516,7 @@ public class Submerged {
 						c.readChar();
 
 						c.clear(); // clears screen
-						
+
 						while (userInput != 'a' && userInput != 'b') {
 
 							c.clear(); // clears screen
@@ -485,8 +534,8 @@ public class Submerged {
 							c.clear(); // clears screen
 
 						}
-						
-						
+
+
 						//asked him
 						if (userInput == 'a') {
 							c.println("Your questioning threatens him. You don't notice him pulling out his"
@@ -504,7 +553,7 @@ public class Submerged {
 							c.readChar();
 
 							c.clear(); // clears screen
-							
+
 							while (userInput != 'a' && userInput != 'b') {
 
 								c.clear(); // clears screen
@@ -539,7 +588,7 @@ public class Submerged {
 								c.readChar();
 
 								c.clear(); // clears screen
-								
+
 								while (userInput != 'a' && userInput != 'b') {
 
 									c.clear(); // clears screen
@@ -589,10 +638,8 @@ public class Submerged {
 										//END
 
 									}
-
 								}
 							}
-
 						}
 					}
 				}
@@ -606,7 +653,7 @@ public class Submerged {
 					c.readChar();
 
 					c.clear(); // clears screen
-					
+
 					while (userInput != 'a' && userInput != 'b') {
 
 						c.clear(); // clears screen
@@ -639,26 +686,22 @@ public class Submerged {
 								+ " Enter in the 4 digits, you have 2 chances.");
 
 						//password loop -- ERROR TO FIX
-						int passcodeEntered;
+						int passcodeEntered = 0;
 						int counter;
 						for (counter = 1; counter >= 0; counter--) {
-							
-						
 
 							// Loop for numbers, ensures it is a number
 							boolean flag = false;
 							do {
 								flag = false;
 								try {
-								passcodeEntered = Integer.parseInt(c.readLine());
+									passcodeEntered = Integer.parseInt(c.readLine());
 								} catch (Exception e) {
-									c.println("Please enter numbers");
+									c.println("Please enter numbers.");
 									flag = true;
 								}
 							}while(flag);
-							
-							passcodeEntered = c.readInt();
-							
+
 							if (passcodeEntered == password) {
 								counter = 0;
 								c.println("The co-captain takes control of the submarine and you both "
@@ -700,7 +743,7 @@ public class Submerged {
 						c.readChar();
 
 						c.clear(); // clears screen
-						
+
 						while (userInput != 'a' && userInput != 'b') {
 
 							c.clear(); // clears screen
@@ -764,8 +807,5 @@ public class Submerged {
 		} while (playAgain != 'n');
 
 		c.println("The game has ended.");
-		
-
 	}
-
 }
