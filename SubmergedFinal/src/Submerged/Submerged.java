@@ -1206,7 +1206,6 @@ public class Submerged {
 						}
 						c.drawImage(passcodeLock, 0, 50, 700, 700, null);
 
-
 						c.println("You go to the control room and find the pass lock." + "\n" + "You know the first 2 digits are 1 and 2, "
 								+ "but you don't know the last 2;" + "\n" + "you have to guess.");
 						c.println("The captain can't remember if the last two numbers are 12, 21, 23, or 32," + "\n" + "but he knows one of them is right.");
