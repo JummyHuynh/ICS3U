@@ -23,15 +23,16 @@ public class Submerged {
 	 */
 
 	public static void main(String[] args) {
-		
+
+		// Possible use for delayed text
 		/** String text = "";
 		slowPrint(text, 30);
-		
+
 		public static void slowPrint(String text, long millisPerChar) {
 		for (int i = 0; i > text.length(); i++) {
-			
+
 			c.print(text.charAt(i));
-			
+
 			try {
 				Thread.sleep(millisPerChar);
 			}
@@ -40,7 +41,7 @@ public class Submerged {
 			}
 		}
 	}
-	*/
+		 */
 
 		Console c = new Console(30, 80);
 
@@ -122,22 +123,6 @@ public class Submerged {
 			}
 			c.drawImage(submarine, 0, 0, 800, 700, null);
 
-			// Extra - may use later?
-			/**c.setTextBackgroundColor(Color.BLACK);
-			c.setTextColor(Color.white); */
-
-			/**
-			 * for(int i=0; i<text.length();i++){
-   System.out.print(""+text.characterAt(i));
-    try {
-       Thread.sleep(100); 
-    } catch (Exception e) {
-       e.printStackTrace();
-    }
-}
-			 */
-
-			
 			// Introduction to the game and situation
 			c.println("You are trapped in a submarine at the bottom of the ocean. As you were on your" + "\n" + "way to Tunisia, the lights suddenly went out and you crashed.");
 			c.println("You go to the kitchen to discover the captain of the ship dead. With multiple" + "\n" + "stab wounds, you assume he has been murdered.");
@@ -149,7 +134,7 @@ public class Submerged {
 			c.println("(b): Find the other members");
 			c.println(); //for spacing
 
-			userInput = c.getChar();
+			userInput = c.getChar(); // gets input
 
 			c.clear(); // clears screen
 
@@ -203,7 +188,6 @@ public class Submerged {
 					c.drawImage(closetDoor, 0, 0, 700, 800, null);
 
 					c.println("You must choose either 'a' or 'b'");
-
 					c.println();
 					c.println("You decide to stay alone, just in case. You need to make your next move. You ");
 					c.println("(a): Want to take a break and keep hiding");
@@ -218,7 +202,7 @@ public class Submerged {
 
 				c.clear(); // clears screen
 
-				//take a break
+				// Decision answer - take a break
 				if (userInput == 'a') {
 
 					// Closet door image
@@ -235,6 +219,7 @@ public class Submerged {
 						e.printStackTrace();
 					}
 
+					// Changes colour for the last output (repeated many times)
 					c.setTextBackgroundColor(Color.BLACK);
 					c.setTextColor(Color.white);
 					c.setBackground(Color.black);
@@ -250,7 +235,7 @@ public class Submerged {
 					//Easier way:
 					c.println("You got the " + weapons[acquiredWeapon]);
 
-					// Ding sound
+					//  Plays ding sound
 					try {
 						ding = AudioSystem.getClip(); //create the clip object
 						ding.open(AudioSystem.getAudioInputStream(new File("Audio/ding.wav"))); //open the given file for the clip
@@ -261,8 +246,8 @@ public class Submerged {
 						e.printStackTrace();
 					}
 
+					//Output the image of the acquired weapon
 					if (acquiredWeapon == 0) {
-						//Output the image of the acquired weapon
 						try {
 							rope = ImageIO.read(new File("Images/Rope.png"));
 						} catch (IOException e) {
@@ -298,14 +283,14 @@ public class Submerged {
 
 					c.clear();
 
-					// Random Number Generator
+					// Random Number Generator for which person they find
 					int randomPersonNumber = 0;
 					randomPersonNumber = (int)(Math.random() * 2);
 
 					// Meet the co-captain
 					if (randomPersonNumber == 0) {
 
-						// Co-captain image
+						// Output co-captain image
 						try {
 							coCaptain = ImageIO.read(new File("Images/Captain.jpg"));
 						} catch (IOException e) {
@@ -343,10 +328,10 @@ public class Submerged {
 							c.clear(); // clears screen
 						}
 
-						//Attack the CC
+						//Attack the co-captain
 						if (userInput == 'a') {
 
-							//weapon is rope
+							// The weapon is rope
 							if (acquiredWeapon == 0) {
 
 								// Rope sound
@@ -380,7 +365,7 @@ public class Submerged {
 							}
 							// weapon is revolver
 							else if (acquiredWeapon == 1){
-								// Random amount of bullets
+								// Randomize the amount of bullets
 								int randomBullets = (int)(Math.random() * 2);
 
 								//If there are no bullets
@@ -485,7 +470,6 @@ public class Submerged {
 						//Help the captain
 						else {
 
-
 							// Image of control room
 							try {
 								controlRoom = ImageIO.read(new File("Images/ControlRoom.jpg"));
@@ -502,7 +486,7 @@ public class Submerged {
 
 							c.println(); //spacing
 
-							// computer sound
+							// Plays computer sound
 							try {
 								computer = AudioSystem.getClip(); //create the clip object
 								computer.open(AudioSystem.getAudioInputStream(new File("Audio/Computer.wav"))); //open the given file for the clip
@@ -513,7 +497,6 @@ public class Submerged {
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
-
 							// END**********************************
 						}
 					}
@@ -549,7 +532,6 @@ public class Submerged {
 							c.drawImage(friend, 200, 150, 200, 500, null);
 
 							c.println("You must choose either 'a' or 'b'");
-
 							c.println();
 							c.println("You see the friend. You don't know whether to trust him. He doesn't see you, so you have the advantage. You decide"
 									+ " you want to");
@@ -596,12 +578,10 @@ public class Submerged {
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
-
 							}
 							else {
 								weaponAttack = "bash";
 							}
-
 
 							// ocean sound
 							try {
@@ -612,7 +592,6 @@ public class Submerged {
 								e.printStackTrace();
 							}
 							ocean.start();
-
 
 							// Land on Horizon Image
 							try {
@@ -636,14 +615,12 @@ public class Submerged {
 							c.println("He gets knocked out and you handcuff him to prevent him"
 									+ " from doing anything" + "\n" + "else. You find the murder weapon on him, and you go find the co-captain." + "\n" + "Knowing he is innocent,"
 									+ " you work together to get help. You are saved.");
-
 							c.println(); // for spacing
 
 							// END**********************************
 						}
 						// Help the friend
 						else {
-
 							// Rope sound
 							try {
 								ropeStrangle = AudioSystem.getClip(); //create the clip object
@@ -682,7 +659,7 @@ public class Submerged {
 				// Decision (loop) declaration
 				char finalAnswer;
 
-				// Decision loop
+				// Decision loop - they can meet someone or go back to find the other person
 				do {
 					finalAnswer = 0;
 
@@ -695,18 +672,15 @@ public class Submerged {
 
 					c.drawImage(hallway, 0, 80, 850, 600, null);
 
-
 					// Decision
 					c.println("You decide to go find help. You head towards the main hallway. You go to");
 					c.println("(a) The lounge");
 					c.println("(b) The bedroom");
-
 					c.println(); //for spacing
 
 					userInput = c.getChar();
 
 					c.clear(); // clears screen
-
 
 					//Ensures they put in either a or b
 					while (userInput != 'a' && userInput != 'b') {
@@ -716,10 +690,8 @@ public class Submerged {
 						c.drawImage(hallway, 0, 80, 850, 600, null);
 
 						c.println("You must choose either 'a' or 'b'");
-
 						c.println();
-						c.println("You decide to go find help. You head towards the main hallway."
-								+ " You go to");
+						c.println("You decide to go find help. You head towards the main hallway. You go to");
 						c.println("(a) The lounge");
 						c.println("(b) The bedroom");
 						c.println(); //for spacing
@@ -728,7 +700,6 @@ public class Submerged {
 						c.clear(); // clears screen
 
 					}
-
 					//You go to lounge
 
 					if (userInput == 'a') {
@@ -760,7 +731,6 @@ public class Submerged {
 
 							c.println("You must choose either 'a' or 'b'");
 							c.println();
-
 							c.println("You find the friend in the lounge. You don't know why he's there." + "\n" + "You are going to");
 							c.println("(a) Trust him");
 							c.println("(b) Go back to the hallway");
@@ -770,13 +740,12 @@ public class Submerged {
 							c.clear(); // clears screen
 
 						}
-
 					}
 
 					// go to bedroom
 					else {
 
-						// Image of bedroom - add human silhouette?
+						// Image of bedroom
 						try {
 							bedroom = ImageIO.read(new File("Images/Bedroom.jpg"));
 						} catch (IOException e) {
@@ -799,7 +768,7 @@ public class Submerged {
 
 							c.clear(); // clears screen
 
-							// Image of bedroom - add human silhouette?
+							// Image of bedroom
 							try {
 								bedroom = ImageIO.read(new File("Images/Bedroom.jpg"));
 							} catch (IOException e) {
@@ -818,18 +787,15 @@ public class Submerged {
 							finalAnswer = c.getChar();
 
 							c.clear(); // clears screen
-
 						}
-
 						c.clear(); // clears screen
 					}
-
 				} while (finalAnswer != 'a');
 
 				//the lounge
 				if (userInput == 'a') {
 
-					// Image of lounge - add human silhouette?
+					// Image of lounge
 					try {
 						lounge = ImageIO.read(new File("Images/Lounge.jpg"));
 					} catch (IOException e) {
@@ -867,7 +833,6 @@ public class Submerged {
 						c.clear(); // clears screen
 
 					}
-
 					//You go first
 					if (userInput == 'a') {
 
@@ -900,7 +865,7 @@ public class Submerged {
 
 					}
 
-					//you go second
+					// If you go second
 					else {
 
 						// Image subtle blood stain
@@ -909,7 +874,6 @@ public class Submerged {
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-
 						c.drawImage(bloodStain, 0, 0, 700, 600, null);
 
 						c.println("You say you'd feel more comfortable if you walked behind. "
@@ -1011,7 +975,6 @@ public class Submerged {
 								userInput = c.getChar();
 
 								c.clear(); // clears screen
-
 							}
 
 							//Run and notices
@@ -1030,7 +993,6 @@ public class Submerged {
 								c.setTextColor(Color.white); 
 								c.setBackground(Color.black);
 								c.println("He notices you and chases after. He gets to you, ties you up. You lose.");
-
 								c.println(); // for spacing
 
 								// END**********************************
@@ -1196,7 +1158,6 @@ public class Submerged {
 					c.println("Alongside the co-captain, you want to");
 					c.println("(a) Go to the control room");
 					c.println("(b) Sleuth in the bedroom");
-
 					c.println(); // for spacing
 
 					userInput = c.getChar();
@@ -1217,7 +1178,6 @@ public class Submerged {
 						c.drawImage(bedroom, 0, 100, 925, 500, null);
 
 						c.println("You must choose either 'a' or 'b'");
-
 						c.println();
 						c.println("Alongside the co-captain, you want to");
 						c.println("(a) Go to the control room");
@@ -1249,12 +1209,9 @@ public class Submerged {
 
 						c.println("You go to the control room and find the pass lock." + "\n" + "You know the first 2 digits are 1 and 2, "
 								+ "but you don't know the last 2;" + "\n" + "you have to guess.");
-						c.println("The captain can't remember if it is 12, 21, 23, or 32," + "\n" + "but he knows one of them is right.");
-
+						c.println("The captain can't remember if the last two numbers are 12, 21, 23, or 32," + "\n" + "but he knows one of them is right.");
 						c.println();
-
 						c.println("Enter in the 4 digits, you have 2 chances.");
-
 						c.println(); // for spacing
 
 						//password loop
@@ -1278,10 +1235,8 @@ public class Submerged {
 										c.clear();
 										c.println("You go to the control room and find the pass lock." + "\n" + "You know the first 2 digits are 1 and 2, "
 												+ "but you don't know the last 2;" + "\n" + "you have to guess.");
-										c.println("The captain can't remember if it is 12, 21, 23, or 32," + "\n" + "but he knows one of them is right.");
-
+										c.println("The captain can't remember if the last two numbers are 12, 21, 23, or 32," + "\n" + "but he knows one of them is right.");
 										c.println();
-
 										c.println("Enter in the 4 digits, you have 2 chances.");
 
 										reset = 0;
@@ -1397,7 +1352,6 @@ public class Submerged {
 							c.drawImage(notebook, 0, 0, 800, 800, null);
 
 							c.println("You must choose either 'a' or 'b'");
-
 							c.println();
 							c.println("You search around for clues. You find the captain's notebook which contains the passcode."
 									+ " Both you and the captain run to the control room and open the lock." + "\n" + "You should");
@@ -1467,7 +1421,7 @@ public class Submerged {
 				}
 			} 
 
-			// Gets input - play again?
+			// Gets input - ask to play again? (loop)
 			c.println("Would you like to play again? (y/n)");
 			c.println(); // for spacing
 
@@ -1478,7 +1432,6 @@ public class Submerged {
 				c.clear();
 
 				c.println("You must choose either 'y' or 'n'");
-
 				c.println();
 				c.println("Would you like to play again?");
 
@@ -1512,8 +1465,7 @@ public class Submerged {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+		
 		c.close(); //closes entire program
-
 	}
 }
