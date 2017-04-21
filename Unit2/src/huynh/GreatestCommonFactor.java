@@ -2,10 +2,11 @@ package huynh;
 
 import java.util.Scanner;
 
-/** GreatestCommonFactor
+/** 
+ * GreatestCommonFactor.java
  * Finds the greatest common factor of 2 numbers
- * April 3rd, 2017
  * @author Jimmy Huynh
+ * April 3rd, 2017
  */
 public class GreatestCommonFactor {
 
@@ -44,7 +45,6 @@ public class GreatestCommonFactor {
 	 * @param b the second number to be compared to find the gcf
 	 * @return the greatest common factor
 	 */
-
 	public static int gcf(int a, int b) {
 
 		int big = Math.max(a, b);

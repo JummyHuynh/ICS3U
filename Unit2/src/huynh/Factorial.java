@@ -2,10 +2,11 @@ package huynh;
 
 import java.util.Scanner;
 
-/** Factorial
+/** 
+ * Factorial.java
  * Finds the factorial of the inputed number
- * April 3rd, 2017
  * @author Jimmy Huynh
+ * April 3rd, 2017
  */
 
 public class Factorial {

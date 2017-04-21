@@ -2,8 +2,15 @@ package huynh;
 
 import java.util.Scanner;
 
+/** OrphanBlack.java
+ * Decodes a strand of DNA
+ * @author Jimmy, Mensimah, Elizabeth, Ethan
+ * April 20, 2017
+ */
 public class OrphanBlack {
 
+	/** We have not finished, we finished early so we were given this one, but we never solved it */
+	
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);

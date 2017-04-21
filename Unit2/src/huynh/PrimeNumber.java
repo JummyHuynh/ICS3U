@@ -2,7 +2,7 @@ package huynh;
 
 import java.util.Scanner;
 
-/** PrimeNumber
+/** PrimeNumber.java
  * Determines if the number inputed is a prime number
  * April 3rd, 2017
  * @author Jimmy Huynh

@@ -5,8 +5,8 @@ import java.util.Scanner;
 /** 
  * AmeriCanadian.java
  * Converts American spelling into Canadian spelling
- * @author Jimmy, Mensimah, Elizabeth, Ethan
  * April 11th, 2017
+ * @author Jimmy, Mensimah, Elizabeth, Ethan
  */
 public class AmeriCanadian {
 

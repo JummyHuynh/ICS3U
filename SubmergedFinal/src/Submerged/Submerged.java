@@ -15,7 +15,7 @@ public class Submerged {
 
 	/**
 	 * 
-	 * Submerged
+	 * Submerged.java
 	 * Text Adventure Game
 	 * FEB.28.2017
 	 * @author Jimmy Huynh and Snehan Gorain

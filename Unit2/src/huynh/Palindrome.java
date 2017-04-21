@@ -2,10 +2,11 @@ package huynh;
 
 import java.util.Scanner;
 
-/** Palindrome
+/** Palindrome.java
  * Determines if the word inputed is a palindrome or not
- * @author Jimmy Huynh
  * April 16th, 2017
+ * @author Jimmy Huynh
+ * 
  */
 
 public class Palindrome {

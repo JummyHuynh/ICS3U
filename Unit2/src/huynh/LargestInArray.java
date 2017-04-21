@@ -2,10 +2,11 @@ package huynh;
 
 import java.util.Scanner;
 
-/** LargestInArray
+/** 
+ * LargestInArray.java
  * Sees what number in the array is the largest
- * April 4th, 2017
  * @author Jimmy Huynh
+ * April 4th, 2017
  */
 
 

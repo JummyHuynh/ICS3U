@@ -2,6 +2,12 @@ package huynh;
 
 import java.util.Scanner;
 
+/**
+ * ReversedSentence.java
+ * Prints a sentence backwards
+ * April 20, 2017
+ * @author Jimmy Huynh
+ */
 public class ReversedSentence {
 
 	public static void main(String[] args) {

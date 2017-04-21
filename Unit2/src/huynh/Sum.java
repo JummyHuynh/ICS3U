@@ -2,10 +2,10 @@ package huynh;
 
 import java.util.Scanner;
 
-/** Sum	
+/** Sum.java
  * Finds the sum of the inputed number
- * April 3rd, 2017
  * @author Jimmy Huynh
+ * April 3rd, 2017
  */
 public class Sum {
 

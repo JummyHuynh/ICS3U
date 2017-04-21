@@ -6,8 +6,8 @@ import java.util.Scanner;
 /** 
  * TakeANumber.java
  * Inputs and calculates the serves, lates per day
- * @author Jimmy, Mensimah, Elizabeth, Ethan
  * April 11th, 2017
+ * @author Jimmy, Mensimah, Elizabeth, Ethan
  */
 public class TakeANumber {
 
