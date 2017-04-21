@@ -3,7 +3,7 @@ package huynh;
 import java.util.Scanner;
 
 public class PerfectInteger {
-
+ 
 	/**
 	 * PerfectInteger.java
 	 * Finds all the numbers that are perfect integers
@@ -48,7 +48,6 @@ public class PerfectInteger {
 				sum = sum + j; 
 			}
 		} 
-		// Returns if the number received is a factor or not
 		if (sum == a) {
 				return true;
 			}

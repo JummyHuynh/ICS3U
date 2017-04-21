@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Converts American spelling into Canadian spelling
  * April 11th, 2017
  * @author Jimmy, Mensimah, Elizabeth, Ethan
- */
+ */ 
 public class AmeriCanadian {
 
 	public static void main(String[] args) {
