@@ -35,7 +35,7 @@ public class AmeriCanadian {
 
 			System.out.println(""); // for spacing
 			
-		} while (!userInput.equals ("quit!"));
+		} while (!userInput.equals("quit!"));
 	}
 }
 
