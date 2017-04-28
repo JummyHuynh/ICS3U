@@ -17,7 +17,7 @@ public class GameOfLife {
 		Scanner scan = new Scanner(System.in);
 
 		String userInput = "yes"; // looping condition
-		boolean breakLoop = true; // whe all cells are dead, it breaks the loop
+		boolean breakLoop = true; // when all cells are dead, it breaks the loop
 		char[][] field = new char [20][20];
 		boolean [][] change = new boolean [20][20]; // To allow for a constant array
 
@@ -64,7 +64,6 @@ public class GameOfLife {
 		int generationNumber = 1; // initialize to keep count of generations
 
 		// looping for the next generations
-		
 			while (cellAlive(change) && breakLoop == true && userInput.equalsIgnoreCase("yes")) {
 				generationNumber++;
 				int neighbour = 0;
