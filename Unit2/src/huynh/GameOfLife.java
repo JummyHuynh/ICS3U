@@ -64,7 +64,7 @@ public class GameOfLife {
 		int generationNumber = 1; // initialize to keep count of generations
 
 		// looping for the next generations
-			while (cellAlive(change) && breakLoop == true && userInput.equalsIgnoreCase("yes")) {
+			while (breakLoop == true && userInput.equalsIgnoreCase("yes")) {
 				generationNumber++;
 				int neighbour = 0;
 
