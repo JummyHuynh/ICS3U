@@ -1,65 +1,58 @@
 package huynh;
 
 import lejos.nxt.Motor;
-import lejos.nxt.SensorPort;
-import lejos.nxt.Sound;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
+/** RobotCulminating.java
+ * Rotates while there isn't an object in front
+ * @author Jimmy Huynh
+ * June 16th, 2017
+ */
 public class UltraSonic implements Behavior{
 
-	UltrasonicSensor sonar = new UltrasonicSensor (SensorPort.S4);
+	UltrasonicSensor sonar;
 	private boolean suppressed = false;
 
+	public UltraSonic(UltrasonicSensor sonar){
+		this.sonar = sonar;
+	}
+	
+	/** Takes control
+	 * @param true or false
+	 * @return true or false values
+	 */ 
 	@Override
 	public boolean takeControl() {
-		sonar.ping();
-		Delay.msDelay(200);
-
-		if (sonar.getDistance() >= 50)
-			return true;	
-		return false;
+			return true;
 	}
 
+	/** Rotates while there is not object in front of the robot
+	 * @param no parameters
+	 * @return does not return
+	 */ 
 	@Override
 	public void action () {
-		sonar.ping();
-		Delay.msDelay(200);
-
-		int x = sonar.getDistance();
-		while (x >= 50) {
-			Motor.A.rotate(50);
-
-			sonar.ping();
-			Delay.msDelay(200);
-			x = sonar.getDistance();
-		}
-
-		Motor.A.rotate(50);
 
 		sonar.continuous();
-		x = sonar.getDistance();
-		
-		while (x >= 25) {
-			Motor.A.forward();
-			Motor.B.forward();
-			
-			x = sonar.getDistance();
+		while (sonar.getDistance() >= 50) {
+			Motor.A.rotate(50);
 		}
+		
+		Motor.A.rotate(120); // rotates more as it senses the edge
 
 		Motor.A.stop();
-		Motor.B.stop();
-		
-		Sound.beep();
-		Sound.beep();
-		
+
 		while (!suppressed) {
 			Thread.yield();
 		}
 
 	}
 
+	/** Suppresses program
+	 * @param true or false
+	 * @return does not return
+	 */ 
 	@Override
 	public void suppress() {
 		suppressed = true;	

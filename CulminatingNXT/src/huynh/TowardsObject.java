@@ -2,56 +2,81 @@ package huynh;
 
 import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
-import lejos.nxt.SensorPort;
 import lejos.nxt.Sound;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
+/** RobotCulminating.java
+ * Detects the objects in front
+ * @author Jimmy Huynh
+ * June 16th, 2017
+ */
 public class TowardsObject implements Behavior {
 
-	LightSensor light = new LightSensor(SensorPort.S3);
-	UltrasonicSensor sonar = new UltrasonicSensor (SensorPort.S4);
-
+	LightSensor light;
+	UltrasonicSensor sonar;
+	
 	private boolean suppressed = false;
 
+	public TowardsObject(LightSensor ls, UltrasonicSensor us){
+		this.light = ls;
+		this.sonar = us;
+	}
 
+	/** Takes control
+	 * @param true or false
+	 * @return true or false values
+	 */ 
 	@Override
 	public boolean takeControl() {
 		sonar.continuous();
 
-		if (sonar.getDistance() <= 25)
+		if (sonar.getDistance() < 50)
 			return true;
 		return false;
 	}
 
+	/** Scans the object's light value and compares to another
+	 * @param no parameters
+	 * @return does not return
+	 */ 
 	@Override
 	public void action() {
 
-		Sound.buzz();
+		while (sonar.getDistance() >= 23) {
+			Motor.A.forward();
+			Motor.B.forward();
+		}
 
 		int x = light.getLightValue();
 
 		Motor.A.backward();
 		Motor.B.backward();
-		
-		Motor.A.rotate(50);
 
-		
-		while (sonar.getDistance() > 50) {
-			Motor.A.rotate(10);	
+		Motor.A.rotate(200);
+
+		sonar.continuous();
+		int y = sonar.getDistance();
+		while (y > 50) {
+			Motor.A.rotate(40);
+			y = sonar.getDistance();
 		}
 
 		sonar.continuous();
-		while (sonar.getDistance() <= 25) {
+		int z = sonar.getDistance();
+		while (z >= 23) {
 			Motor.A.forward();
 			Motor.B.forward();
+			z = sonar.getDistance();
 		}
-		
+
 		Motor.A.stop();
 		Motor.B.stop();
-
-		if (light.getLightValue() == x) {
-			Sound.buzz();
+		
+		if (light.getLightValue() >= (x-5) && light.getLightValue() <= (x+5)) {
+			Sound.beep();
+		}
+		else {
 			Sound.buzz();
 		}
 
@@ -61,6 +86,10 @@ public class TowardsObject implements Behavior {
 
 	}
 
+	/** Suppresses program
+	 * @param true or false
+	 * @return does not return
+	 */ 
 	@Override
 	public void suppress() {
 		suppressed = true;
