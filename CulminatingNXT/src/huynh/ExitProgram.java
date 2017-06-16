@@ -31,6 +31,10 @@ public class ExitProgram implements Behavior{
 		System.exit(0);
 	}
 
+	/** Suppresses program
+	 * @param true or false
+	 * @return does not return
+	 */ 
 	@Override
 	public void suppress() {
 		

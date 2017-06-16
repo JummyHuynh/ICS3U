@@ -55,14 +55,12 @@ public class TowardsObject implements Behavior {
 
 		Motor.A.rotate(200);
 
-		sonar.continuous();
 		int y = sonar.getDistance();
 		while (y > 50) {
 			Motor.A.rotate(40);
 			y = sonar.getDistance();
 		}
 
-		sonar.continuous();
 		int z = sonar.getDistance();
 		while (z >= 23) {
 			Motor.A.forward();
@@ -73,12 +71,10 @@ public class TowardsObject implements Behavior {
 		Motor.A.stop();
 		Motor.B.stop();
 		
-		if (light.getLightValue() >= (x-5) && light.getLightValue() <= (x+5)) {
+		if (light.getLightValue() >= (x-5) && light.getLightValue() <= (x+5))
 			Sound.beep();
-		}
-		else {
+		else 
 			Sound.buzz();
-		}
 
 		while (!suppressed) {
 			Thread.yield();
